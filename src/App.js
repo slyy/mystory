@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import iconTest from "assets/icons/file_text_data.png";
 import "App.css";
 
 function App() {
+  useEffect(() => {
+    const chrome = window.chrome;
+    chrome.history.search({ text: "", maxResults: 20 }, (results) => {
+      console.log("chrome.history.search results");
+      console.log(results);
+    });
+  }, []);
+
   return (
     <Router>
       <div>
+        <img src={iconTest} alt="Test icon" />
         <ul>
           <li>
             <Link to="/">Home</Link>
