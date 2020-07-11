@@ -1,10 +1,24 @@
-import React from "react";
-import styles from "features/history/style.module.css";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { searchHistory, entries, isLoading } from "components/history/reducer";
+import styles from "components/history/style.module.css";
 
-export default function ({ historyItems }) {
+export default function (text) {
+  const dispatch = useDispatch();
+  const loading = useSelector(isLoading);
+  const historyEntries = useSelector(entries);
+
+  useEffect(() => {
+    dispatch(searchHistory());
+  }, []);
+
+  if (loading === true) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
     <>
-      {historyItems.map((historyItem) => (
+      {historyEntries.map((historyItem) => (
         <HistoryItem key={historyItem.id} historyItem={historyItem} />
       ))}
     </>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import iconTest from "assets/icons/file_text_data.png";
-import HistoryItems from "features/history";
+import HistoryItems from "components/history";
 import "App.css";
 
 function App() {
@@ -27,26 +27,10 @@ function App() {
 // in your app.
 
 function Home() {
-  const [results, setResults] = useState([]);
-  const [elapsedTime, setElapsedTime] = useState(null);
-
-  useEffect(() => {
-    const chrome = window.chrome;
-    const startTime = Date.now();
-    chrome.history.search({ text: "", maxResults: 100 }, (historyItems) => {
-      const endTime = Date.now();
-      setResults(historyItems);
-      setElapsedTime((endTime - startTime) / 1000);
-    });
-  }, []);
-
   return (
     <div>
       <h2>Mistory</h2>
-      {elapsedTime != null ? (
-        <div>{`Search total time (in sec.): ${elapsedTime}`}</div>
-      ) : null}
-      <HistoryItems historyItems={results} />
+      <HistoryItems />
     </div>
   );
 }
