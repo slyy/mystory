@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import iconTest from "assets/icons/file_text_data.png";
 import HistoryItems from "components/history";
-import "App.css";
+import styles from "App.module.css";
 
 function App() {
   return (
     <Router>
-      <div>
+      <div className={styles.popup}>
         {/*
           A <Switch> looks through all its children <Route>
           elements and renders the first one whose path
