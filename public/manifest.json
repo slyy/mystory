@@ -9,5 +9,5 @@
     "default_title": "Mistory",
     "default_popup": "index.html"
   },
-  "permissions": ["history"]
+  "permissions": ["history", "sessions", "tabs"]
 }
